@@ -1,0 +1,2 @@
+#execute in godot dir
+scons platform=windows vsproj=yes generate_bindings=yes custom_modules=../jake-modules summator_shared=yes
