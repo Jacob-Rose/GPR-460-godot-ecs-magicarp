@@ -9,13 +9,17 @@ extends ECS_EntityManager
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var x = -100
-	for n in range(100):
-		x += 50
+	for _n in range(100):
+		x += 25
 		var y = -100
-		for r in range(100):
-			y += 50
+		for _r in range(100):
+			y += 25
 			var id = addEntity()
-			setEntitySprite(id,load("res://magikarp.png"))
+			if rand_range(0.0,1.0) > 0.9:
+				setEntitySprite(id, load("res://gyarados.png"))
+			else:
+				setEntitySprite(id,load("res://magikarp.png"))
+			
 			setEntitySineMoveIntensity(id, Vector2(rand_range(-5.0,5.0),rand_range(-5.0,5.0)))
 			setEntitySineMoveSpeed(id, rand_range(-0.01,0.01))
 			#setEntitySineMoveSeed(id, 1)
