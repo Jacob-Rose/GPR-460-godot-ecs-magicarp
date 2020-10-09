@@ -18,7 +18,7 @@ void ECS_EntityManager::_bind_methods() {
 }
 
 ECS_EntityManager::ECS_EntityManager() {
-	
+	set_process(true);
 }
 
 int ECS_EntityManager::addEntity() {
