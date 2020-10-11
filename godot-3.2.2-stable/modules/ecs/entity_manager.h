@@ -6,9 +6,8 @@
 #include <scene/2d/node_2d.h>
 #include <vector>
 #include <map>
-#include "entity.h"
-#include "component_manager.h"
 #include <stdexcept>
+#include "component.h"
 
 class ECS_EntityManager : public Node2D {
 	GDCLASS(ECS_EntityManager, Node2D);

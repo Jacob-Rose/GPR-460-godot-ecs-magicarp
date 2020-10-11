@@ -5,11 +5,7 @@ Import('env')
 sources = [
     "register_types.cpp",
     "component.cpp",
-    "entity.cpp",
-    "system.cpp",
-    "component_manager.cpp",
-    "entity_manager.cpp",
-    "manager.cpp"
+    "entity_manager.cpp"
 ]
 
 # First, create a custom env for the shared library.

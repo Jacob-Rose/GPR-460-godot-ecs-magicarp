@@ -13,6 +13,9 @@ void ECS_EntityManager::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("setEntitySineMoveIntensity", "id", "intensity"), &ECS_EntityManager::setEntitySineMoveIntensity);
 	ClassDB::bind_method(D_METHOD("setEntitySineMoveSeed", "id", "seed"), &ECS_EntityManager::setEntitySineMoveSeed);
 	ClassDB::bind_method(D_METHOD("setEntitySineMoveSpeed", "id", "speed"), &ECS_EntityManager::setEntitySineMoveSpeed);
+	ClassDB::bind_method(D_METHOD("addTransformComponent", "id"), &ECS_EntityManager::addTransformComponent);
+	ClassDB::bind_method(D_METHOD("addSineMoverComponent", "id"), &ECS_EntityManager::addSineMoverComponent);
+	ClassDB::bind_method(D_METHOD("addSpriteComponent", "id"), &ECS_EntityManager::addSpriteComponent);
 	//ClassDB::bind_method(D_METHOD("getTransform2DComponentRef"), &ECS_EntityManager::getTransform2DComponentRef);
 	//ClassDB::bind_method(D_METHOD("getSprite2DComponentManager"), &ECS_EntityManager::getSprite2DComponent);
 }
@@ -22,11 +25,11 @@ ECS_EntityManager::ECS_EntityManager() {
 }
 
 int ECS_EntityManager::addEntity() {
-	++m_IDTracker;
+	++m_IDTracker; //we just will keep this sequential to avoid issues
 	m_EntityIDs.push_back(m_IDTracker);
-	addTransformComponent(m_IDTracker);
-	addSpriteComponent(m_IDTracker);
-	addSineMoverComponent(m_IDTracker);
+	//addTransformComponent(m_IDTracker);
+	//addSpriteComponent(m_IDTracker);
+	//addSineMoverComponent(m_IDTracker);
 	return m_IDTracker;
 }
 
@@ -164,9 +167,6 @@ void ECS_EntityManager::_drawRenderSystem() {
 		if (spriteComp == nullptr || transformComp == nullptr) {
 			continue;
 		}
-
-		bool filter_clip = false;
-		int size = 32;
 
 		draw_texture(spriteComp->texture, transformComp->pos);
 	}
