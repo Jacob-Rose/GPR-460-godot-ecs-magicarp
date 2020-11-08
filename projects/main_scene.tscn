@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://ECS_EntityManager.gd" type="Script" id=2]
+[ext_resource path="res://addons/orbit_camera/orbit_camera.gd" type="Script" id=1]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="ArrayMesh" id=1]
 
-[node name="ECS_EntityManager" type="ECS_EntityManager" parent="."]
-script = ExtResource( 2 )
+[node name="Spatial" type="Spatial"]
+
+[node name="Subdivider" type="Subdivider" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.7483 )
+mesh = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.54542 )
+script = ExtResource( 1 )
+DEFAULT_DISTANCE = 5.0
+ROTATE_SPEED = 2.0
+ANCHOR_NODE_PATH = NodePath("../Subdivider")

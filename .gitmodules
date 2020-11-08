@@ -1,0 +1,3 @@
+[submodule "meshparse"]
+	path = meshparse
+	url = https://github.com/haldean/meshparse.git
