@@ -1,7 +1,8 @@
 #include "subdivider.h"
 #include "halfedge/objparse.h"
+#include "halfedge/he_mesh.h"
 #include <fstream>
-#include <list>
+#include <vector>
 #include <iostream>
 #include <core/os/input.h>
 #include <core\engine.h>
@@ -271,7 +272,7 @@ void Subdivider::subdivideMesh() {
 				newEdgesFromFace[(count * 4) + 3]->f = newFace;
 				newEdgesFromFace[(count * 4) + 1]->f = newFace;
 			}
-
+			cEdge = cEdge->next;
 			count++;
 		}
 
@@ -297,7 +298,7 @@ void Subdivider::subdivideMesh() {
 
 		//we then will connect them based on the midpoint and the new edges
 		//Th
-		cEdge = cEdge->next;
+
 	}
 	if (m_HalfEdgeMesh != m_OriginalMesh) {
 		delete m_HalfEdgeMesh;
